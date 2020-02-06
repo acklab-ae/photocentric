@@ -5,6 +5,7 @@ import torchvision.transforms as transforms
 from PIL import Image
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 import os
+import sys
 import pandas as pd
 from tqdm import tqdm 
 import time
@@ -47,7 +48,7 @@ def process(x, y, log):
     model.eval().to(device)
     predict(image, model, image_path, log)
 
-image_location = '/data/images/'
+image_location = sys.argv[1]
 log = 'images.log'
 
 with open(log,'w') as f:
