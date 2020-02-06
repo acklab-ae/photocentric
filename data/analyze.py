@@ -47,7 +47,7 @@ def process(x, y, log):
     model.eval().to(device)
     predict(image, model, image_path, log)
 
-image_location = '../datasets/photocentric/'
+image_location = '/data/images/'
 log = 'images.log'
 
 with open(log,'w') as f:
@@ -65,6 +65,4 @@ df = pd.read_csv('images.log')
 df.sort_values(by=['score'], ascending=False, inplace=True)
 df.reset_index(drop=True, inplace=True)
 
-best_photo = df['image'][0]
-
-print(f'Highest Ranking photo is: {best_photo}')
+print(df)
