@@ -47,23 +47,25 @@ def process(x, y, log):
     model.load_state_dict(torch.load('model/model-resnet50.pth', map_location=device))
     model.eval().to(device)
     predict(image, model, image_path, log)
+try:
+    image_location = sys.argv[1]
+    log = 'images.log'
 
-image_location = sys.argv[1]
-log = 'images.log'
+    with open(log,'w') as f:
+        f.write('image,score')
+    f.close()
 
-with open(log,'w') as f:
-    f.write('image,score')
-f.close()
+    list_of_files = os.listdir(image_location)
 
-list_of_files = os.listdir(image_location)
+    count = 0
+    for i in tqdm(list_of_files):
+        process(image_location,list_of_files[count],log)
+        count +=1
 
-count = 0
-for i in tqdm(list_of_files):
-    process(image_location,list_of_files[count],log)
-    count +=1
+    df = pd.read_csv('images.log')
+    df.sort_values(by=['score'], ascending=False, inplace=True)
+    df.reset_index(drop=True, inplace=True)
 
-df = pd.read_csv('images.log')
-df.sort_values(by=['score'], ascending=False, inplace=True)
-df.reset_index(drop=True, inplace=True)
-
-print(df)
+    print(df)
+except:
+    print('Something is wrong...  Check the file being analyzed or the path specified.  Usage: python analyze.py images/')
