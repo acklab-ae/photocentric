@@ -1,7 +1,11 @@
 # Photocentric... yet another ai bot for social networking.
+
 Author: Andrew Eng
+
 Date: 2020-01-06
+
 Starter code derived from: dingkeyan93/Intrinsic-Image-Popularity
+
 
 ## Summary:
 Photocentric is an AI framework that will interact with Instagram.  
