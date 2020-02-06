@@ -13,7 +13,7 @@ Photocentric is an AI framework that will interact with Instagram.
 To simplify the development across platforms, I created a docker image based on python:3 (currently tested on Phtyon 3.8).  
 docker pull andreweng/photocentric:latest
 
-[alt text](https://github.com/acklab-ae/photocentric/images/sample.png "Sample Image")
+(https://github.com/acklab-ae/photocentric/blob/master/images/example.png "Sample Image")
 
 **mkdir ~/projects**
 **cd ~/projects**
